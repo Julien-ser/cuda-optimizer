@@ -166,7 +166,7 @@ streamlit run dashboard/app.py
 - ✅ Task 3.1: Implement gradient checkpointing with custom recompute ([learn more](docs/checkpointing.md))
 - ✅ Task 3.2: Develop tensor parallelism utilities ([learn more](docs/tensor_parallel.md))
 - ✅ Task 3.3: Create optimizer fusion pass (AdamW fused kernel) ([learn more](docs/adam_fused.md))
-- ⬜ Task 3.4: Build real-time monitoring dashboard ([learn more](docs/dashboard.md))
+- ✅ Task 3.4: Build real-time monitoring dashboard ([learn more](docs/dashboard.md))
 
 See [TASKS.md](TASKS.md) for complete roadmap.
 

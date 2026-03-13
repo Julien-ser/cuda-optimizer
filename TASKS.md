@@ -28,7 +28,7 @@
   - **Deliverables:** `src/parallel/tensor_parallel.py` implementing 1D/2D tensor slicing; communication backend using NCCL; test with GPT-2 small across 4 GPUs showing linear scaling
 - [x] **Task 3.3:** Create optimizer fusion pass (AdamW fused kernel)
   - **Deliverables:** `src/fusion/adam_fused.cu` implementing fused weight update with L2 regularization; `src/fusion/optim_fusion.py` auto-replacing torch.optim.AdamW; performance test showing 30% faster than unfused
-- [ ] **Task 3.4:** Build real-time monitoring dashboard
+- [x] **Task 3.4:** Build real-time monitoring dashboard
   - **Deliverables:** `src/monitoring/dashboard.py` with live GPU utilization, memory, throughput; Streamlit-based UI `dashboard/app.py`; export to JSON/CSV for analysis
 
 ## Phase 4: Testing, Documentation & Deployment

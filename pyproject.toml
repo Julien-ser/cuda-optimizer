@@ -56,6 +56,11 @@ docs = [
     "sphinx-rtd-theme>=1.0",
     "myst-parser>=1.0",
 ]
+monitoring = [
+    "streamlit>=1.24.0",
+    "plotly>=5.14.0",
+    "pandas>=2.0.0",
+]
 
 [project.urls]
 Homepage = "https://github.com/anomalyco/cuda-optimizer"
