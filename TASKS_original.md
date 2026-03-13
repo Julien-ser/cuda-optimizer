@@ -2,7 +2,7 @@
 **Mission:** Specialized coding setup for pytorch nns running on cuda devices. Make an outline of the code needed and steps. Also a mermaid diagram for loops and whatnot in the Readme would be good
 
 ## Phase 1: Planning & Setup
-- [x] **Task 1.1:** Define optimization targets and requirements
+- [ ] **Task 1.1:** Define optimization targets and requirements
   - **Deliverables:** `docs/optimization_targets.md` with specific NN architectures (CNN, RNN, Transformer) and target metrics (FPS improvement %, memory reduction %)
 - [ ] **Task 1.2:** Set up development environment with CUDA toolchain
   - **Deliverables:** Dockerfile `Dockerfile.cuda-dev` with CUDA 11.8+, cuDNN, PyTorch 2.0+, NVIDIA Nsight; validated with `nvcc --version` and `nvidia-smi`
