@@ -105,8 +105,12 @@ cuda-optimizer/
 ├── docs/               # Documentation
 ├── tests/              # Unit & integration tests
 ├── scripts/            # CLI utilities
-├── notebooks/          # Tutorials
-└── data/               # Benchmark datasets
+├── notebooks/          # Tutorials 📚
+│   ├── 01_basics.ipynb           # CNN/ResNet50 optimization
+│   ├── 02_transformers.ipynb     # BERT optimization
+│   └── 03_distributed.ipynb      # Multi-GPU training
+├── data/               # Benchmark datasets
+└── dashboard/          # Monitoring UI
 ```
 
 ## Installation
@@ -184,16 +188,19 @@ streamlit run dashboard/app.py
 - ✅ Task 3.3: Create optimizer fusion pass (AdamW fused kernel) ([learn more](docs/adam_fused.md))
 - ✅ Task 3.4: Build real-time monitoring dashboard ([learn more](docs/dashboard.md))
 
-**Phase 4: Testing, Documentation & Deployment**
-- ✅ Task 4.1: Implement comprehensive test suite ([learn more](docs/testing.md))
-- ✅ Task 4.2: Create user documentation and API reference
-  - [Quickstart Guide](docs/quickstart.md)
-  - [API Reference](docs/api/)
-  - [Migration Guide](docs/migration_guide.md)
-  - [Troubleshooting](docs/troubleshooting.md)
-  - [Optimization Targets](docs/optimization_targets.md)
-- ✅ Task 4.3: Package and publish to PyPI
-- ⏳ Task 4.4: Create Jupyter notebooks with tutorials
+ **Phase 4: Testing, Documentation & Deployment**
+ - ✅ Task 4.1: Implement comprehensive test suite ([learn more](docs/testing.md))
+ - ✅ Task 4.2: Create user documentation and API reference
+   - [Quickstart Guide](docs/quickstart.md)
+   - [API Reference](docs/api/)
+   - [Migration Guide](docs/migration_guide.md)
+   - [Troubleshooting](docs/troubleshooting.md)
+   - [Optimization Targets](docs/optimization_targets.md)
+ - ✅ Task 4.3: Package and publish to PyPI
+ - ✅ Task 4.4: Create Jupyter notebooks with tutorials
+   - [Notebook 1: CNN Optimization](notebooks/01_basics.ipynb) (ResNet50)
+   - [Notebook 2: Transformer Optimization](notebooks/02_transformers.ipynb) (BERT)
+   - [Notebook 3: Distributed Training](notebooks/03_distributed.ipynb) (Multi-GPU)
 
 See [TASKS.md](TASKS.md) for complete roadmap.
 

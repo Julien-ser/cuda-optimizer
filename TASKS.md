@@ -38,8 +38,8 @@
   - **Deliverables:** `README.md` with quickstart, installation, performance benchmarks; `docs/api/` with auto-generated Sphinx docs; migration guide from vanilla PyTorch; troubleshooting section
 - [x] **Task 4.3:** Package and publish to PyPI
   - **Deliverables:** `setup.py`/`pyproject.toml` for pip install; `cuda_optimizer/` package with `__init__.py` exposing high-level API; published package `cuda-optimizer` with CUDA requirement metadata
-- [ ] **Task 4.4:** Create Jupyter notebooks with tutorials
-  - **Deliverables:** `notebooks/01_basics.ipynb` optimizing CNN; `notebooks/02_transformers.ipynb` optimizing BERT; `notebooks/03_distributed.ipynb` multi-GPU setup; performance comparison charts in each
+ - [x] **Task 4.4:** Create Jupyter notebooks with tutorials
+   - **Deliverables:** `notebooks/01_basics.ipynb` optimizing CNN; `notebooks/02_transformers.ipynb` optimizing BERT; `notebooks/03_distributed.ipynb` multi-GPU setup; performance comparison charts in each
 
 ## Architecture Overview
 
