@@ -24,7 +24,7 @@
 ## Phase 3: Advanced Features & Integration
 - [x] **Task 3.1:** Implement gradient checkpointing with custom recompute
   - **Deliverables:** `src/checkpoint/selective_checkpoint.py` allowing per-layer checkpoint selection; `src/checkpoint/compiler.py` using torch.utils.checkpoint with custom recompute function; memory savings benchmark showing 50%+ reduction
-- [ ] **Task 3.2:** Develop tensor parallelism utilities
+- [x] **Task 3.2:** Develop tensor parallelism utilities
   - **Deliverables:** `src/parallel/tensor_parallel.py` implementing 1D/2D tensor slicing; communication backend using NCCL; test with GPT-2 small across 4 GPUs showing linear scaling
 - [ ] **Task 3.3:** Create optimizer fusion pass (AdamW fused kernel)
   - **Deliverables:** `src/fusion/adam_fused.cu` implementing fused weight update with L2 regularization; `src/fusion/optim_fusion.py` auto-replacing torch.optim.AdamW; performance test showing 30% faster than unfused
