@@ -159,7 +159,7 @@ streamlit run dashboard/app.py
 **Phase 2: Core CUDA Optimization Implementation**
 - ✅ Task 2.1: Implement custom CUDA kernels for tensor operations ([learn more](docs/custom_ops.md))
 - ✅ Task 2.2: Develop memory pool and caching allocator ([learn more](docs/cuda_cache.md))
-- ⬜ Task 2.3: Create automatic mixed precision optimizer wrapper
+- ✅ Task 2.3: Create automatic mixed precision optimizer wrapper ([learn more](docs/amp_wrapper.md))
 - ⬜ Task 2.4: Build kernel auto-tuner using NVIDIA NVTX
 
 See [TASKS.md](TASKS.md) for complete roadmap.

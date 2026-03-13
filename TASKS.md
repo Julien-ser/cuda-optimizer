@@ -16,7 +16,7 @@
   - **Deliverables:** `src/kernels/custom_ops.cu` with fused activation+layernorm kernel; `src/kernels/__init__.py` with PyTorch C++/CUDA extension bindings; benchmark showing 20%+ speedup over native ops
 - [x] **Task 2.2:** Develop memory pool and caching allocator
   - **Deliverables:** `src/memory/cuda_cache.py` implementing caching allocator with pool reuse; `src/memory/expiry_policy.py` LRU-based memory management; memory fragmentation reduction test showing <5% fragmentation
-- [ ] **Task 2.3:** Create automatic mixed precision optimizer wrapper
+- [x] **Task 2.3:** Create automatic mixed precision optimizer wrapper
   - **Deliverables:** `src/optim/amp_wrapper.py` extending torch.cuda.amp with dynamic loss scaling per layer; gradient accumulation strategy; validation maintaining FP32 accuracy within 0.1%
 - [ ] **Task 2.4:** Build kernel auto-tuner using NVIDIA NVTX
   - **Deliverables:** `src/tuner/autotuner.py` searching block/grid dimensions; configuration cache `~/.cache/cuda-optimizer/` storing optimal params; tuning script for 5 common ops
