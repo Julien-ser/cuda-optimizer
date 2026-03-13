@@ -192,7 +192,7 @@ streamlit run dashboard/app.py
   - [Migration Guide](docs/migration_guide.md)
   - [Troubleshooting](docs/troubleshooting.md)
   - [Optimization Targets](docs/optimization_targets.md)
-- ⏳ Task 4.3: Package and publish to PyPI
+- ✅ Task 4.3: Package and publish to PyPI
 - ⏳ Task 4.4: Create Jupyter notebooks with tutorials
 
 See [TASKS.md](TASKS.md) for complete roadmap.

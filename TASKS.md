@@ -36,7 +36,7 @@
   - **Deliverables:** Unit tests in `tests/unit/` covering all modules; integration tests `tests/integration/test_full_pipeline.py` with ResNet50 training; CI config `.github/workflows/test.yml` running on GPU runner; coverage report >90%
 - [x] **Task 4.2:** Create user documentation and API reference
   - **Deliverables:** `README.md` with quickstart, installation, performance benchmarks; `docs/api/` with auto-generated Sphinx docs; migration guide from vanilla PyTorch; troubleshooting section
-- [ ] **Task 4.3:** Package and publish to PyPI
+- [x] **Task 4.3:** Package and publish to PyPI
   - **Deliverables:** `setup.py`/`pyproject.toml` for pip install; `cuda_optimizer/` package with `__init__.py` exposing high-level API; published package `cuda-optimizer` with CUDA requirement metadata
 - [ ] **Task 4.4:** Create Jupyter notebooks with tutorials
   - **Deliverables:** `notebooks/01_basics.ipynb` optimizing CNN; `notebooks/02_transformers.ipynb` optimizing BERT; `notebooks/03_distributed.ipynb` multi-GPU setup; performance comparison charts in each
