@@ -7,7 +7,7 @@ name = "cuda-optimizer"
 version = "0.1.0"
 description = "Specialized coding setup for PyTorch neural networks running on CUDA devices"
 readme = "README.md"
-license = {text = "MIT"}
+license = {file = "LICENSE"}
 requires-python = ">=3.9"
 authors = [
     {name = "CUDA Optimizer Team"}
