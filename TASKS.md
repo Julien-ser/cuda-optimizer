@@ -22,7 +22,7 @@
   - **Deliverables:** `src/tuner/autotuner.py` searching block/grid dimensions; configuration cache `~/.cache/cuda-optimizer/` storing optimal params; tuning script for 5 common ops
 
 ## Phase 3: Advanced Features & Integration
-- [ ] **Task 3.1:** Implement gradient checkpointing with custom recompute
+- [x] **Task 3.1:** Implement gradient checkpointing with custom recompute
   - **Deliverables:** `src/checkpoint/selective_checkpoint.py` allowing per-layer checkpoint selection; `src/checkpoint/compiler.py` using torch.utils.checkpoint with custom recompute function; memory savings benchmark showing 50%+ reduction
 - [ ] **Task 3.2:** Develop tensor parallelism utilities
   - **Deliverables:** `src/parallel/tensor_parallel.py` implementing 1D/2D tensor slicing; communication backend using NCCL; test with GPT-2 small across 4 GPUs showing linear scaling

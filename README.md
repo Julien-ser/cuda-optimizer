@@ -160,7 +160,13 @@ streamlit run dashboard/app.py
 - ✅ Task 2.1: Implement custom CUDA kernels for tensor operations ([learn more](docs/custom_ops.md))
 - ✅ Task 2.2: Develop memory pool and caching allocator ([learn more](docs/cuda_cache.md))
 - ✅ Task 2.3: Create automatic mixed precision optimizer wrapper ([learn more](docs/amp_wrapper.md))
-- ⬜ Task 2.4: Build kernel auto-tuner using NVIDIA NVTX
+- ✅ Task 2.4: Build kernel auto-tuner using NVIDIA NVTX ([learn more](docs/autotuner.md))
+
+**Phase 3: Advanced Features & Integration**
+- ✅ Task 3.1: Implement gradient checkpointing with custom recompute ([learn more](docs/checkpointing.md))
+- ⬜ Task 3.2: Develop tensor parallelism utilities ([learn more](docs/tensor_parallel.md))
+- ⬜ Task 3.3: Create optimizer fusion pass (AdamW fused kernel) ([learn more](docs/adam_fused.md))
+- ⬜ Task 3.4: Build real-time monitoring dashboard ([learn more](docs/dashboard.md))
 
 See [TASKS.md](TASKS.md) for complete roadmap.
 
