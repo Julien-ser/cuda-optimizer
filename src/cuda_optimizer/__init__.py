@@ -15,7 +15,7 @@ from cuda_optimizer.optim.amp_wrapper import AMPWrapper
 from cuda_optimizer.tuner.autotuner import Autotuner
 from cuda_optimizer.checkpoint.selective_checkpoint import SelectiveCheckpoint
 from cuda_optimizer.parallel.tensor_parallel import TensorParallel
-from cuda_optimizer.fusion.adam_fused import AdamFused
+from cuda_optimizer.fusion.adam_fused import FusedAdamW
 from cuda_optimizer.monitoring.dashboard import Dashboard
 
 __all__ = [
@@ -26,6 +26,6 @@ __all__ = [
     "Autotuner",
     "SelectiveCheckpoint",
     "TensorParallel",
-    "AdamFused",
+    "FusedAdamW",
     "Dashboard",
 ]
