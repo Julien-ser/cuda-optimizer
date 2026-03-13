@@ -1,4 +1,5 @@
 LICENSE
+MANIFEST.in
 README.md
 pyproject.toml
 src/cuda_optimizer/__init__.py
@@ -11,9 +12,11 @@ src/cuda_optimizer/checkpoint/__init__.py
 src/cuda_optimizer/checkpoint/compiler.py
 src/cuda_optimizer/checkpoint/selective_checkpoint.py
 src/cuda_optimizer/fusion/__init__.py
+src/cuda_optimizer/fusion/adam_fused.cu
 src/cuda_optimizer/fusion/adam_fused.py
 src/cuda_optimizer/fusion/optim_fusion.py
 src/cuda_optimizer/kernels/__init__.py
+src/cuda_optimizer/kernels/custom_ops.cu
 src/cuda_optimizer/kernels/custom_ops.py
 src/cuda_optimizer/memory/__init__.py
 src/cuda_optimizer/memory/cuda_cache.py
