@@ -6,7 +6,7 @@
   - **Deliverables:** `docs/optimization_targets.md` with specific NN architectures (CNN, RNN, Transformer) and target metrics (FPS improvement %, memory reduction %)
 - [x] **Task 1.2:** Set up development environment with CUDA toolchain
   - **Deliverables:** Dockerfile `Dockerfile.cuda-dev` with CUDA 11.8+, cuDNN, PyTorch 2.0+, NVIDIA Nsight; validated with `nvcc --version` and `nvidia-smi`
-- [ ] **Task 1.3:** Establish baseline profiling infrastructure
+- [x] **Task 1.3:** Establish baseline profiling infrastructure
   - **Deliverables:** `src/profiling/base_profiler.py` integrating torch.profiler, NVIDIA Nsight Systems CLI; baseline benchmarks script `scripts/run_baseline.py` for ResNet50, BERT-small
 - [x] **Task 1.4:** Create project structure and dependency management
   - **Deliverables:** `pyproject.toml` with dev dependencies (black, mypy, pytest, torch, cupy); directory structure: `src/`, `tests/`, `scripts/`, `docs/`, `data/`
