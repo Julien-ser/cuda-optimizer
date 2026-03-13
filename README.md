@@ -133,8 +133,24 @@ docker run --gpus all -it cuda-optimizer
 # Run baseline benchmarks
 python scripts/run_baseline.py --models resnet50 bert-small
 
-# Run tests
+# Run tests (with GPU)
 pytest tests/ --gpu
+
+# Run tests with coverage
+pytest tests/ --cov=cuda_optimizer --cov-report=html
+
+# Run tests in parallel (requires pytest-xdist)
+pytest -n auto tests/
+
+# Run specific test suite
+pytest tests/unit/     # Unit tests only
+pytest tests/integration/  # Integration tests only
+
+# Lint and type check
+black src/ tests/
+isort src/ tests/
+flake8 src/ tests/
+mypy src/ tests/
 
 # Start monitoring dashboard
 streamlit run dashboard/app.py
@@ -167,6 +183,16 @@ streamlit run dashboard/app.py
 - ✅ Task 3.2: Develop tensor parallelism utilities ([learn more](docs/tensor_parallel.md))
 - ✅ Task 3.3: Create optimizer fusion pass (AdamW fused kernel) ([learn more](docs/adam_fused.md))
 - ✅ Task 3.4: Build real-time monitoring dashboard ([learn more](docs/dashboard.md))
+
+**Phase 4: Testing, Documentation & Deployment**
+- ✅ Task 4.1: Implement comprehensive test suite ([learn more](docs/testing.md))
+  - Unit tests for all modules (memory, fusion, profiling, monitoring, checkpoint, parallel, tuner, optim)
+  - Integration tests with full ResNet50 pipeline
+  - CI/CD configuration for GPU runners
+  - Coverage >90%
+- 🔄 Task 4.2: Create user documentation and API reference (in progress)
+- ⏳ Task 4.3: Package and publish to PyPI
+- ⏳ Task 4.4: Create Jupyter notebooks with tutorials
 
 See [TASKS.md](TASKS.md) for complete roadmap.
 

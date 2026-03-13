@@ -1,0 +1,193 @@
+name: Test and Coverage
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  # Allow manual trigger
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: '3.10'
+
+jobs:
+  test:
+    # Use GPU runner (self-hosted or with GPU support)
+    runs-on: [self-hosted, Linux]
+    # If using GitHub's GPU runners (limited availability):
+    # runs-on: ubuntu-latest
+    # container: ghcr.io/pytorch/pytorch-nightly:latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - test-type: "unit"
+            test-path: "tests/unit"
+            coverage: true
+          - test-type: "integration"
+            test-path: "tests/integration"
+            coverage: false
+          - test-type: "full"
+            test-path: "tests"
+            coverage: true
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ env.PYTHON_VERSION }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+
+    - name: Install CUDA dependencies (self-hosted)
+      if: runner.provider == 'self-hosted'
+      run: |
+        # Check CUDA availability
+        nvcc --version || echo "CUDA compiler not found"
+        nvidia-smi || echo "nvidia-smi not found"
+        python -c "import torch; print(f'PyTorch: {torch.__version__}, CUDA: {torch.version.cuda}, Available: {torch.cuda.is_available()}')" || echo "Torch check failed"
+
+    - name: Install dependencies
+      run: |
+        # Upgrade pip
+        python -m pip install --upgrade pip
+
+        # Install package with dev dependencies
+        pip install -e ".[dev,monitoring]"
+
+        # Optional: install coverage
+        pip install pytest-cov
+
+        # Install additional test dependencies
+        pip install pytest-xdist  # Parallel test execution
+
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/pyproject.toml') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Run ${{ matrix.test-type }} tests
+      id: test
+      env:
+        CUDA_VISIBLE_DEVICES: "0"
+        PYTHONPATH: ${{ github.workspace }}/src
+      run: |
+        # Run tests with xdist for parallel execution if multiple GPUs
+        pytest -n auto --dist=loadfile \
+          ${{ matrix.test-path }} \
+          -v \
+          --tb=short \
+          --junitxml=test-results-${{ matrix.test-type }}.xml \
+          --color=yes \
+          ${{ matrix.coverage && '--cov=cuda_optimizer --cov-report=xml --cov-report=term' || '' }}
+
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results-${{ matrix.test-type }}
+        path: |
+          test-results-${{ matrix.test-type }}.xml
+          coverage.xml
+          htmlcov/
+
+    - name: Check coverage threshold
+      if: matrix.coverage
+      run: |
+        # Fail if coverage below 90%
+        coverage report --fail-under=90
+
+    - name: Upload coverage to Codecov
+      if: matrix.coverage
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: ${{ matrix.test-type }}
+        name: ${{ matrix.test-type }}-coverage
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install -e ".[dev]"
+
+    - name: Run black
+      run: |
+        black --check src/ tests/
+
+    - name: Run isort
+      run: |
+        isort --check-only src/ tests/
+
+    - name: Run flake8
+      run: |
+        flake8 src/ tests/
+
+    - name: Run mypy
+      run: |
+        mypy src/ tests/
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Dockerfile.cuda-dev
+        push: false
+        tags: cuda-optimizer:latest
+        platforms: linux/amd64
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install -e ".[docs]"
+
+    - name: Build documentation
+      run: |
+        sphinx-build -b html docs/ docs/_build/html
+
+    - name: Upload documentation
+      uses: actions/upload-artifact@v3
+      with:
+        name: documentation
+        path: docs/_build/html
