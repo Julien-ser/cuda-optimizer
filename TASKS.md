@@ -18,7 +18,7 @@
   - **Deliverables:** `src/memory/cuda_cache.py` implementing caching allocator with pool reuse; `src/memory/expiry_policy.py` LRU-based memory management; memory fragmentation reduction test showing <5% fragmentation
 - [x] **Task 2.3:** Create automatic mixed precision optimizer wrapper
   - **Deliverables:** `src/optim/amp_wrapper.py` extending torch.cuda.amp with dynamic loss scaling per layer; gradient accumulation strategy; validation maintaining FP32 accuracy within 0.1%
-- [ ] **Task 2.4:** Build kernel auto-tuner using NVIDIA NVTX
+- [x] **Task 2.4:** Build kernel auto-tuner using NVIDIA NVTX
   - **Deliverables:** `src/tuner/autotuner.py` searching block/grid dimensions; configuration cache `~/.cache/cuda-optimizer/` storing optimal params; tuning script for 5 common ops
 
 ## Phase 3: Advanced Features & Integration
